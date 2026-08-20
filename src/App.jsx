@@ -146,15 +146,18 @@ function App() {
   return (
     <div className="game">
       <Header />
-      <div className="game-top">
-        <DifficultySelector 
-          difficulty={difficulty} 
-          onDifficultyChange={setDifficulty} 
-        />
+      <div className="game-controls">
+        <div className="left-panel">
+          <DifficultySelector 
+            difficulty={difficulty} 
+            onDifficultyChange={setDifficulty} 
+          />
+        </div>
+        <div className="right-panel">
+          <Score score={score} bestScore={bestScore} />
+        </div>
       </div>
-
-      <Score score={score} bestScore={bestScore} />
-
+      
       {!gameOver && (
         <CardGrid cards={cards} onCardClick={handleCardClick} />
       )}

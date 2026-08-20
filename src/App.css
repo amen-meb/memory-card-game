@@ -33,6 +33,18 @@ button:focus-visible {
 }
 
 /* ========================================
+   REMOVE SIDE BORDERS 
+======================================== */
+#root, 
+.game,
+body,
+html {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ========================================
    APP
 ======================================== */
 
@@ -64,39 +76,39 @@ button:focus-visible {
 
 
 /* ========================================
-   GAME CONTROLS (Replaces game-top & score)
+   PANEL LAYOUT (Left & Right alignment)
 ======================================== */
-
 .game-controls {
   width: min(1100px, 92%);
   margin: 20px auto 30px auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Pushes left-panel left, right-panel right */
   align-items: flex-end; /* Aligns the bottoms of the buttons and score boxes */
 }
 
 /* ========================================
-   DIFFICULTY SELECTOR (Left Side)
+   LEFT PANEL (Difficulty)
 ======================================== */
-
-.difficulty-selector {
+.left-panel .difficulty-selector {
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: auto auto auto;
   gap: 10px;
 }
 
-.difficulty-selector span, 
-.difficulty-selector label {
-  grid-column: 1 / -1; /* Forces the text to sit on top of the buttons */
+.left-panel span, 
+.left-panel label {
+  grid-column: 1 / -1; 
+  text-align: left;
   font-size: 0.95rem;
   font-weight: 600;
   color: #4b5563;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 
 .difficulty-button {
+  min-width: 110px;
   min-height: 44px;
-  padding: 0 20px;
+  padding: 0 15px;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
   background: #f9fafb;
@@ -110,7 +122,6 @@ button:focus-visible {
 .difficulty-button:hover {
   border-color: #93c5fd;
   background: #eff6ff;
-  transform: translateY(-1px);
 }
 
 .difficulty-button.active {
@@ -121,31 +132,32 @@ button:focus-visible {
 }
 
 /* ========================================
-   SCORE (Right Side)
+   RIGHT PANEL (Score)
 ======================================== */
-
-.score {
+.right-panel .score {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   gap: 12px;
 }
 
-.score p {
-  padding: 9px 15px;
+.right-panel p {
+  padding: 10px 18px;
   border-radius: 10px;
   background: #ffffff;
   border: 1px solid #e5e7eb;
   color: #6b7280;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  margin: 0;
 }
 
-.score span {
+.right-panel span {
   color: #111827;
   font-weight: 800;
-  margin-left: 5px;
+  margin-left: 8px;
+  font-size: 1.05rem;
 }
 
 /* ========================================
@@ -156,7 +168,6 @@ button:focus-visible {
   width: min(1100px, 92%);
   margin: 0 auto;
   display: grid;
-  /* Updated to exactly match your wireframe (4 columns) */
   grid-template-columns: repeat(4, 1fr); 
   gap: 20px;
 }
@@ -210,8 +221,8 @@ button:focus-visible {
 }
 
 .card img {
-  width: 140px;
-  height: 140px;
+  width: 180px;
+  height: 180px;
   object-fit: contain;
   image-rendering: auto;
   transition: transform 0.25s ease;
