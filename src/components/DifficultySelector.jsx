@@ -8,7 +8,9 @@ export default function DifficultySelector({ difficulty, onDifficultyChange }) {
         value="easy"
         onClick={() => onDifficultyChange("easy")}
       >
-        Easy
+        <span className="diff-name">Easy</span>
+        <span className="diff-count">(8 Cards)</span>
+
       </button>
       
       <button
@@ -16,7 +18,8 @@ export default function DifficultySelector({ difficulty, onDifficultyChange }) {
         value="medium"
         onClick={() => onDifficultyChange("medium")}
       >
-        Medium
+        <span className="diff-name">Medium</span>
+        <span className="diff-count">(12 Cards)</span>
       </button>
       
       <button
@@ -24,7 +27,8 @@ export default function DifficultySelector({ difficulty, onDifficultyChange }) {
         value="hard"
         onClick={() => onDifficultyChange("hard")}
       >
-        Hard
+        <span className="diff-name">Hard</span>
+        <span className="diff-count">(20 Cards)</span>
       </button>
     </div>
   );

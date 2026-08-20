@@ -8,11 +8,6 @@ import GameOver from "./components/GameOver";
 import DifficultySelector from "./components/DifficultySelector";
 import "./App.css";
 
-// GET RANDOM CARDS
-function getRandomCards(cards, numberOfCards) {
-  const shuffledCards = [...cards].sort(() => Math.random() - 0.5);
-  return shuffledCards.slice(0, numberOfCards);
-}
 
 function App() {
   // States
@@ -78,6 +73,12 @@ function App() {
     setGameOver(false);
     setWon(false);
   }, [difficulty, allCards, numberOfCards]);
+
+  // GET RANDOM CARDS
+  function getRandomCards(cards, numberOfCards) {
+    const shuffledCards = [...cards].sort(() => Math.random() - 0.5);
+    return shuffledCards.slice(0, numberOfCards);
+  }
 
   function getRandomIds(count) {
     const ids = new Set();
@@ -157,7 +158,7 @@ function App() {
           <Score score={score} bestScore={bestScore} />
         </div>
       </div>
-      
+
       {!gameOver && (
         <CardGrid cards={cards} onCardClick={handleCardClick} />
       )}
