@@ -194,6 +194,8 @@ html {
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(15, 23, 42, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  font: inherit;
+  text-align: center;
 }
 
 .card::before {
@@ -378,6 +380,21 @@ html {
   line-height: 1.6;
 }
 
+.error button {
+  margin-top: 24px;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.error button:hover {
+  background: #1d4ed8;
+}
+
 /* 
    TABLET (Max Width 800px)
  */
@@ -450,6 +467,24 @@ html {
 
   .card p {
     font-size: 0.9rem;
+  }
+
+  .left-panel .difficulty-selector {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .difficulty-button {
+    min-width: 0;
+    padding: 8px 4px;
+  }
+
+  .diff-name {
+    font-size: 0.95rem;
+  }
+
+  .diff-count {
+    font-size: 0.7rem;
   }
 
   .game-over {

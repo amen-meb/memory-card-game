@@ -8,6 +8,13 @@ import GameOver from "./components/GameOver";
 import DifficultySelector from "./components/DifficultySelector";
 import "./App.css";
 
+const DIFFICULTY_SETTINGS = {
+  easy: 8,
+  medium: 12,
+  hard: 20,
+};
+
+const MAX_CARD_COUNT = Math.max(...Object.values(DIFFICULTY_SETTINGS));
 
 function App() {
   // States
@@ -22,20 +29,15 @@ function App() {
   const [error, setError] = useState(null);
   const [difficulty, setDifficulty] = useState("easy");
 
-  const difficultySettings = {
-    easy: 8,
-    medium: 12,
-    hard: 20,
-  };
-
-  const numberOfCards = difficultySettings[difficulty];
+  const numberOfCards = DIFFICULTY_SETTINGS[difficulty];
 
   // FETCH POKÉMON (Only runs once on mount)
   useEffect(() => {
     async function fetchPokemon() {
+      setLoading(true);
+      setError(null);
       try {
-        const maxNeeded = Math.max(...Object.values(difficultySettings)); 
-        const pokemonIds = getRandomIds(maxNeeded); 
+        const pokemonIds = getRandomIds(MAX_CARD_COUNT); 
         
         const requests = pokemonIds.map((id) =>
           fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((response) => {
@@ -53,7 +55,7 @@ function App() {
         }));
         
         setAllCards(formattedCards);
-        setCards(getRandomCards(formattedCards, numberOfCards));
+        setCards(getRandomCards(formattedCards, DIFFICULTY_SETTINGS.easy));
       } catch (error) {
         setError(error.message);
       } finally {
@@ -61,18 +63,16 @@ function App() {
       }
     }
     fetchPokemon();
-  }, []); 
+  }, []);
 
-  // CHANGE DIFFICULTY
-  useEffect(() => {
-    if (allCards.length === 0) return;
-
-    setCards(getRandomCards(allCards, numberOfCards));
+  function handleDifficultyChange(nextDifficulty) {
+    setDifficulty(nextDifficulty);
+    setCards(getRandomCards(allCards, DIFFICULTY_SETTINGS[nextDifficulty]));
     setScore(0);
     setClickedCards([]);
     setGameOver(false);
     setWon(false);
-  }, [difficulty, allCards, numberOfCards]);
+  }
 
   // GET RANDOM CARDS
   function getRandomCards(cards, numberOfCards) {
@@ -140,6 +140,9 @@ function App() {
       <div className="error">
         <h2>Something went wrong!</h2>
         <p>{error}</p>
+        <button type="button" onClick={() => window.location.reload()}>
+          Try Again
+        </button>
       </div>
     );
   }
@@ -151,7 +154,7 @@ function App() {
         <div className="left-panel">
           <DifficultySelector 
             difficulty={difficulty} 
-            onDifficultyChange={setDifficulty} 
+            onDifficultyChange={handleDifficultyChange} 
           />
         </div>
         <div className="right-panel">
