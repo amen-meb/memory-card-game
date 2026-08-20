@@ -1,26 +1,21 @@
+
 import { useEffect, useState } from "react";
 
 import Header from "./components/Header";
 import Score from "./components/Score";
 import CardGrid from "./components/CardGrid";
 import GameOver from "./components/GameOver";
-
-import "./App.css";
 import DifficultySelector from "./components/DifficultySelector";
+import "./App.css";
 
 // GET RANDOM CARDS
 function getRandomCards(cards, numberOfCards) {
-  const shuffledCards = [...cards].sort(
-    () => Math.random() - 0.5
-  );
+  const shuffledCards = [...cards].sort(() => Math.random() - 0.5);
   return shuffledCards.slice(0, numberOfCards);
 }
 
 function App() {
-
-  const [page, setPage] = useState("home");
-  const [showRules, setShowRules] = useState(false);
-  // All Pokémon fetched from the API
+  // States
   const [allCards, setAllCards] = useState([]);
   const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
@@ -38,23 +33,19 @@ function App() {
     hard: 20,
   };
 
-  const numberOfCards =
-    difficultySettings[difficulty];
+  const numberOfCards = difficultySettings[difficulty];
 
-    // FETCH POKÉMON
+  // FETCH POKÉMON (Only runs once on mount)
   useEffect(() => {
     async function fetchPokemon() {
       try {
-        const pokemonIds = getRandomIds(12); //12 random IDs 1-898
+        const maxNeeded = Math.max(...Object.values(difficultySettings)); 
+        const pokemonIds = getRandomIds(maxNeeded); 
+        
         const requests = pokemonIds.map((id) =>
-          fetch(
-            `https://pokeapi.co/api/v2/pokemon/${id}`
-          ).then((response) => {
-
+          fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then((response) => {
             if (!response.ok) {
-              throw new Error(
-                `HTTP error! status: ${response.status}`
-              );
+              throw new Error(`HTTP error! status: ${response.status}`);
             }
             return response.json();
           })
@@ -65,39 +56,28 @@ function App() {
           name: pokemon.name,
           image: pokemon.sprites.front_default,
         }));
+        
         setAllCards(formattedCards);
-
-        setCards(
-          getRandomCards(
-            formattedCards,
-            numberOfCards
-          )
-        );
+        setCards(getRandomCards(formattedCards, numberOfCards));
       } catch (error) {
         setError(error.message);
       } finally {
         setLoading(false);
       }
-   }
+    }
     fetchPokemon();
-  }, []);
+  }, []); 
 
   // CHANGE DIFFICULTY
   useEffect(() => {
-    if (allCards.length === 0) {
-      return;
-    }
-    setCards(
-      getRandomCards(
-        allCards,
-        numberOfCards
-      )
-    );
+    if (allCards.length === 0) return;
+
+    setCards(getRandomCards(allCards, numberOfCards));
     setScore(0);
     setClickedCards([]);
     setGameOver(false);
     setWon(false);
-  }, [difficulty, allCards]);
+  }, [difficulty, allCards, numberOfCards]);
 
   function getRandomIds(count) {
     const ids = new Set();
@@ -108,27 +88,9 @@ function App() {
     return Array.from(ids);
   }
 
-  // START GAME
-  function startGame() {
-    setScore(0);
-    setClickedCards([]);
-    setGameOver(false);
-    setWon(false);
-
-    setCards(
-      getRandomCards(
-        allCards,
-        numberOfCards
-      )
-    );
-    setPage("game");
-  }
-
   // SHUFFLE CARDS
   function shuffleCards() {
-    setCards(
-      getRandomCards( allCards, numberOfCards)
-    );
+    setCards((prevCards) => [...prevCards].sort(() => Math.random() - 0.5));
   }
 
   // CARD CLICK
@@ -137,6 +99,7 @@ function App() {
       setGameOver(true);
       return;
     }
+    
     const newScore = score + 1;
     setScore(newScore);
     setClickedCards([...clickedCards, card.id]);
@@ -150,12 +113,13 @@ function App() {
       setGameOver(true);
       return;
     }
+    
     shuffleCards();
   }
 
+  // RESET GAME
   function resetGame() {
-    setCards( getRandomCards( allCards, numberOfCards )
-    );
+    setCards(getRandomCards(allCards, numberOfCards));
     setScore(0);
     setClickedCards([]);
     setGameOver(false);
@@ -183,30 +147,23 @@ function App() {
     <div className="game">
       <Header />
       <div className="game-top">
-        <DifficultySelector/>
+        <DifficultySelector 
+          difficulty={difficulty} 
+          onDifficultyChange={setDifficulty} 
+        />
       </div>
 
-      <Score
-        score={score}
-        bestScore={bestScore}
-      />
+      <Score score={score} bestScore={bestScore} />
 
       {!gameOver && (
-        <CardGrid
-          cards={cards}
-          onCardClick={handleCardClick}
-        />
+        <CardGrid cards={cards} onCardClick={handleCardClick} />
       )}
 
       {gameOver && (
-        <GameOver
-          won={won}
-          onRestart={resetGame}
-        />
+        <GameOver won={won} score={score} bestScore={bestScore} onRestart={resetGame} />
       )}
     </div>
   );
 }
-
 
 export default App;

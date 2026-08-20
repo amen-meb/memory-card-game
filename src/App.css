@@ -9,17 +9,10 @@
 }
 
 :root {
-  font-family:
-    Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-
   color: #1f2937;
   background: #f5f7fb;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
@@ -39,7 +32,6 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
-
 /* ========================================
    APP
 ======================================== */
@@ -53,399 +45,121 @@ button:focus-visible {
   padding-bottom: 50px;
 }
 
-
-/* ========================================
-   HOME PAGE
-======================================== */
-
-.home {
-  min-height: 100vh;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding: 30px 20px;
-
-  background:
-    radial-gradient(
-      circle at top left,
-      #e0e7ff 0,
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at bottom right,
-      #dbeafe 0,
-      transparent 35%
-    ),
-    #f5f7fb;
-}
-
-.home-container {
-  width: 100%;
-  max-width: 480px;
-
-  padding: 45px 40px;
-
-  background: #ffffff;
-
-  border: 1px solid #e5e7eb;
-  border-radius: 24px;
-
-  box-shadow:
-    0 20px 50px rgba(15, 23, 42, 0.08),
-    0 4px 12px rgba(15, 23, 42, 0.04);
-
-  text-align: center;
-}
-
-
-/* ========================================
-   HOME TITLE
-======================================== */
-
-.game-title {
-  margin-bottom: 40px;
-}
-
-.game-title h1 {
-  color: #111827;
-
-  font-size: clamp(2rem, 5vw, 2.8rem);
-
-  font-weight: 800;
-
-  letter-spacing: -1.5px;
-
-  margin-bottom: 10px;
-}
-
-.game-title p {
-  color: #6b7280;
-
-  font-size: 1rem;
-}
-
-
-/* ========================================
-   HOME ACTIONS
-======================================== */
-
-.home-actions {
-  display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  gap: 14px;
-
-  margin-bottom: 35px;
-}
-
-.home-actions button {
-  min-height: 52px;
-
-  border-radius: 12px;
-
-  font-size: 1rem;
-
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease;
-}
-
-
-/* Play */
-
-.play-button {
-  border: none;
-
-  background: #2563eb;
-
-  color: #ffffff;
-
-  box-shadow:
-    0 8px 18px rgba(37, 99, 235, 0.25);
-}
-
-.play-button:hover {
-  background: #1d4ed8;
-
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 12px 24px rgba(37, 99, 235, 0.3);
-}
-
-
-/* Rules */
-
-.rules-button {
-  border: 1px solid #d1d5db;
-
-  background: #ffffff;
-
-  color: #374151;
-}
-
-.rules-button:hover {
-  background: #f9fafb;
-
-  border-color: #9ca3af;
-
-  transform: translateY(-2px);
-}
-
-
-/* ========================================
-   DIFFICULTY
-======================================== */
-
-.home-difficulty {
-  margin-bottom: 35px;
-}
-
-.home-difficulty h3 {
-  color: #374151;
-
-  font-size: 0.9rem;
-
-  font-weight: 700;
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.08em;
-
-  margin-bottom: 14px;
-}
-
-.difficulty-options {
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 10px;
-}
-
-.difficulty-button {
-  min-height: 44px;
-
-  border: 1px solid #e5e7eb;
-
-  border-radius: 10px;
-
-  background: #f9fafb;
-
-  color: #4b5563;
-
-  cursor: pointer;
-
-  font-weight: 600;
-
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
-}
-
-.difficulty-button:hover {
-  border-color: #93c5fd;
-
-  background: #eff6ff;
-
-  transform: translateY(-1px);
-}
-
-.difficulty-button.active {
-  border-color: #2563eb;
-
-  background: #2563eb;
-
-  color: #ffffff;
-
-  box-shadow:
-    0 5px 12px #2563eb33;
-}
-
-
-/* ========================================
-   BEST SCORE
-======================================== */
-
-.home-best-score {
-  padding: 18px;
-
-  border-radius: 14px;
-
-  background: #f8fafc;
-
-  border: 1px solid #e5e7eb;
-}
-
-.home-best-score p {
-  color: #6b7280;
-
-  font-size: 0.85rem;
-
-  font-weight: 600;
-
-  margin-bottom: 5px;
-}
-
-.home-best-score strong {
-  color: #111827;
-
-  font-size: 2rem;
-
-  font-weight: 800;
-}
-
-
 /* ========================================
    HEADER
 ======================================== */
 
 .header {
   width: 100%;
-
   padding: 28px 30px 10px;
-
   text-align: center;
 }
 
 .header h1 {
   color: #111827;
-
   font-size: clamp(1.7rem, 4vw, 2.4rem);
-
   font-weight: 800;
-
   letter-spacing: -1px;
 }
 
 
 /* ========================================
-   GAME TOP
+   GAME CONTROLS (Replaces game-top & score)
 ======================================== */
 
-.game-top {
+.game-controls {
   width: min(1100px, 92%);
-
-  margin: 15px auto 0;
-
+  margin: 20px auto 30px auto;
   display: flex;
-
   justify-content: space-between;
-
-  align-items: center;
+  align-items: flex-end; /* Aligns the bottoms of the buttons and score boxes */
 }
-
-.home-button {
-  padding: 9px 16px;
-
-  border: 1px solid #d1d5db;
-
-  border-radius: 9px;
-
-  background: #ffffff;
-
-  color: #374151;
-
-  cursor: pointer;
-
-  font-weight: 600;
-
-  transition: 0.2s ease;
-}
-
-.home-button:hover {
-  background: #f3f4f6;
-
-  border-color: #9ca3af;
-}
-
-.difficulty-display {
-  padding: 8px 14px;
-
-  border-radius: 20px;
-
-  background: #eff6ff;
-
-  color: #1d4ed8;
-
-  font-size: 0.9rem;
-
-  font-weight: 700;
-
-  text-transform: capitalize;
-}
-
 
 /* ========================================
-   SCORE
+   DIFFICULTY SELECTOR (Left Side)
+======================================== */
+
+.difficulty-selector {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 10px;
+}
+
+.difficulty-selector span, 
+.difficulty-selector label {
+  grid-column: 1 / -1; /* Forces the text to sit on top of the buttons */
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 5px;
+}
+
+.difficulty-button {
+  min-height: 44px;
+  padding: 0 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #f9fafb;
+  color: #4b5563;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: capitalize;
+  transition: all 0.2s ease;
+}
+
+.difficulty-button:hover {
+  border-color: #93c5fd;
+  background: #eff6ff;
+  transform: translateY(-1px);
+}
+
+.difficulty-button.active {
+  border-color: #2563eb;
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 5px 12px #2563eb33;
+}
+
+/* ========================================
+   SCORE (Right Side)
 ======================================== */
 
 .score {
-  width: min(1100px, 92%);
-
-  margin: 20px auto;
-
   display: flex;
-
   justify-content: flex-end;
-
   align-items: center;
-
   gap: 12px;
 }
 
 .score p {
   padding: 9px 15px;
-
   border-radius: 10px;
-
   background: #ffffff;
-
   border: 1px solid #e5e7eb;
-
   color: #6b7280;
-
   font-size: 0.9rem;
-
   font-weight: 600;
-
-  box-shadow:
-    0 2px 8px rgba(15, 23, 42, 0.03);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
 }
 
 .score span {
   color: #111827;
-
   font-weight: 800;
+  margin-left: 5px;
 }
 
-
 /* ========================================
-   CARD GRID
+   CARD GRID (4 Columns!)
 ======================================== */
 
 .card-grid {
   width: min(1100px, 92%);
-
-  margin: 25px auto;
-
+  margin: 0 auto;
   display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
+  /* Updated to exactly match your wireframe (4 columns) */
+  grid-template-columns: repeat(4, 1fr); 
   gap: 20px;
 }
-
 
 /* ========================================
    CARD
@@ -453,65 +167,38 @@ button:focus-visible {
 
 .card {
   position: relative;
-
   min-height: 220px;
-
   padding: 20px;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: center;
-
   align-items: center;
-
   background: #ffffff;
-
   border: 1px solid #e5e7eb;
-
   border-radius: 18px;
-
   cursor: pointer;
-
   overflow: hidden;
-
-  box-shadow:
-    0 5px 15px rgba(15, 23, 42, 0.05);
-
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
+  box-shadow: 0 5px 15px rgba(15, 23, 42, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .card::before {
   content: "";
-
   position: absolute;
-
   top: 0;
   left: 0;
   right: 0;
-
   height: 4px;
-
   background: #2563eb;
-
   transform: scaleX(0);
-
   transform-origin: center;
-
   transition: transform 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-6px);
-
   border-color: #bfdbfe;
-
-  box-shadow:
-    0 15px 30px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 15px 30px rgba(15, 23, 42, 0.1);
 }
 
 .card:hover::before {
@@ -524,13 +211,9 @@ button:focus-visible {
 
 .card img {
   width: 140px;
-
   height: 140px;
-
   object-fit: contain;
-
   image-rendering: auto;
-
   transition: transform 0.25s ease;
 }
 
@@ -540,16 +223,11 @@ button:focus-visible {
 
 .card p {
   margin-top: 8px;
-
   color: #374151;
-
   font-size: 1rem;
-
   font-weight: 700;
-
   text-transform: capitalize;
 }
-
 
 /* ========================================
    GAME OVER
@@ -557,207 +235,72 @@ button:focus-visible {
 
 .game-over {
   width: min(500px, 90%);
-
   margin: 70px auto;
-
   padding: 45px 30px;
-
   background: #ffffff;
-
   border: 1px solid #e5e7eb;
-
   border-radius: 22px;
-
   text-align: center;
-
-  box-shadow:
-    0 20px 45px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
 }
 
 .game-over h2 {
   color: #111827;
-
   font-size: 2.2rem;
-
   font-weight: 800;
-
   margin-bottom: 12px;
 }
 
 .game-over p {
   color: #6b7280;
-
   font-size: 1rem;
-
   margin-bottom: 25px;
 }
 
 .game-over button {
   min-width: 150px;
-
   padding: 12px 22px;
-
   border: none;
-
   border-radius: 10px;
-
   background: #2563eb;
-
   color: #ffffff;
-
   font-weight: 700;
-
   cursor: pointer;
-
   transition: 0.2s ease;
 }
 
 .game-over button:hover {
   background: #1d4ed8;
-
   transform: translateY(-2px);
 }
 
-
 /* ========================================
-   RULES MODAL
-======================================== */
-
-.rules-overlay {
-  position: fixed;
-
-  inset: 0;
-
-  z-index: 1000;
-
-  padding: 20px;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  background: rgba(15, 23, 42, 0.55);
-
-  backdrop-filter: blur(5px);
-}
-
-.rules {
-  width: min(500px, 100%);
-
-  max-height: 90vh;
-
-  overflow-y: auto;
-
-  padding: 35px;
-
-  background: #ffffff;
-
-  border-radius: 20px;
-
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.2);
-}
-
-.rules h2 {
-  color: #111827;
-
-  font-size: 1.7rem;
-
-  margin-bottom: 18px;
-}
-
-.rules p {
-  color: #6b7280;
-
-  line-height: 1.7;
-
-  margin-bottom: 20px;
-}
-
-.rules ul {
-  padding-left: 20px;
-
-  color: #374151;
-
-  line-height: 1.8;
-
-  margin-bottom: 25px;
-}
-
-.rules li {
-  margin-bottom: 6px;
-}
-
-.close-button {
-  width: 100%;
-
-  padding: 11px;
-
-  border: 1px solid #d1d5db;
-
-  border-radius: 10px;
-
-  background: #ffffff;
-
-  color: #374151;
-
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition: 0.2s ease;
-}
-
-.close-button:hover {
-  background: #f3f4f6;
-
-  border-color: #9ca3af;
-}
-
-
-/* ========================================
-   LOADING
+   LOADING / ERROR
 ======================================== */
 
 .loading {
   min-height: 100vh;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: center;
-
   align-items: center;
-
   gap: 18px;
-
   background: #f5f7fb;
 }
 
 .loading::before {
   content: "";
-
   width: 45px;
-
   height: 45px;
-
   border: 4px solid #dbeafe;
-
   border-top-color: #2563eb;
-
   border-radius: 50%;
-
   animation: spin 0.8s linear infinite;
 }
 
 .loading h2 {
   color: #4b5563;
-
   font-size: 1rem;
-
   font-weight: 600;
 }
 
@@ -767,51 +310,46 @@ button:focus-visible {
   }
 }
 
-
-/* ========================================
-   ERROR
-======================================== */
-
 .error {
   min-height: 100vh;
-
   padding: 30px;
-
   display: flex;
-
   flex-direction: column;
-
   justify-content: center;
-
   align-items: center;
-
   text-align: center;
 }
 
 .error h2 {
   color: #b91c1c;
-
   margin-bottom: 10px;
 }
 
 .error p {
   max-width: 500px;
-
   color: #6b7280;
-
   line-height: 1.6;
 }
-
 
 /* ========================================
    TABLET
 ======================================== */
 
 @media (max-width: 800px) {
+  /* Stack controls on tablet */
+  .game-controls {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .difficulty-selector {
+    text-align: center;
+  }
 
+  /* Scale grid down to 3 columns */
   .card-grid {
-    grid-template-columns: repeat(2, 1fr);
-
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
   }
 
@@ -821,110 +359,45 @@ button:focus-visible {
 
   .card img {
     width: 120px;
-
     height: 120px;
   }
-
-  .score {
-    justify-content: center;
-  }
-
 }
-
 
 /* ========================================
    MOBILE
 ======================================== */
 
 @media (max-width: 520px) {
-
-  .home {
-    padding: 15px;
-  }
-
-  .home-container {
-    padding: 35px 22px;
-
-    border-radius: 18px;
-  }
-
-  .game-title {
-    margin-bottom: 30px;
-  }
-
-  .game-title h1 {
-    font-size: 2rem;
-  }
-
-  .home-actions {
-    grid-template-columns: 1fr;
-
-    gap: 10px;
-
-    margin-bottom: 30px;
-  }
-
-  .difficulty-options {
-    grid-template-columns: 1fr;
-  }
-
-  .difficulty-button {
-    width: 100%;
-  }
-
-
-  /* Game */
-
   .header {
     padding: 22px 15px 8px;
   }
 
-  .game-top {
-    width: 94%;
-
-    margin-top: 10px;
-  }
-
   .score {
-    width: 94%;
-
     flex-direction: column;
-
+    width: 100%;
     gap: 8px;
-
-    margin: 15px auto;
   }
-
+  
   .score p {
     width: 100%;
-
     text-align: center;
   }
 
-
-  /* Cards */
-
+  /* Scale grid down to 2 columns for phones */
   .card-grid {
     width: 94%;
-
     grid-template-columns: repeat(2, 1fr);
-
     gap: 12px;
-
-    margin-top: 20px;
   }
 
   .card {
     min-height: 170px;
-
     padding: 10px;
-
     border-radius: 14px;
   }
 
   .card img {
     width: 90px;
-
     height: 90px;
   }
 
@@ -932,26 +405,98 @@ button:focus-visible {
     font-size: 0.85rem;
   }
 
-
-  /* Game over */
-
   .game-over {
     margin: 50px auto;
-
     padding: 35px 20px;
   }
 
   .game-over h2 {
     font-size: 1.8rem;
   }
+}
 
+/* ========================================
+   GAME OVER OVERLAY (The Blur Effect)
+======================================== */
 
-  /* Rules */
+.game-over-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(245, 247, 251, 0.6); /* Semi-transparent background */
+  backdrop-filter: blur(8px); /* Blurs the game board */
+  -webkit-backdrop-filter: blur(8px); /* For Safari support */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
-  .rules {
-    padding: 25px 20px;
+/* ========================================
+   GAME OVER MODAL (No border)
+======================================== */
 
-    border-radius: 16px;
-  }
+.game-over {
+  width: min(400px, 90%);
+  padding: 50px 30px;
+  background: #ffffff;
+  border: none; /* REMOVED THE BORDER */
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.game-over h2 {
+  color: #111827;
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+}
+
+.game-over-scores {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.game-over-scores p {
+  padding: 15px;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #4b5563;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.game-over-scores span {
+  color: #111827;
+  font-weight: 800;
+  font-size: 1.3rem;
+  margin-left: 8px;
+}
+
+.game-over button {
+  min-width: 200px;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.game-over button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.25);
 }
